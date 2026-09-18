@@ -1,5 +1,5 @@
 ### AnyKernel3 Ramdisk Mod Script
-## osm0sis @ xda-developers & GitHub @ Xiaomichael&cctv18
+## osm0sis @ xda-developers & GitHub @ Xiaomichael&cctv18 @AkiHaza
 
 ### AnyKernel setup
 # global properties
@@ -31,7 +31,7 @@ NO_MAGISK_CHECK=1
 # import functions/variables and setup patching - see for reference (DO NOT REMOVE)
 . tools/ak3-core.sh
 
-ui_print "内核构建者: Coolapk@cctv18"
+ui_print "构建者: 秋山叶樱"
 
 # Resolving occasional file system I/O latency issues which may cause binary execution exceptions
 sync
@@ -45,32 +45,4 @@ if [ -f "split_img/ramdisk.cpio" ]; then
     write_boot
 else
     flash_boot
-fi
-## end boot install
-# 优先选择模块路径
-if [ -f "$AKHOME/zram.zip" ]; then
-    MODULE_PATH="$AKHOME/zram.zip"
-    KSUD_PATH="/data/adb/ksud"
-    if [ -f "$KSUD_PATH" ]; then
-        ui_print "Installing zram Module..."
-        /data/adb/ksud module install "$MODULE_PATH"
-        ui_print "Installation Complete!"
-    else
-        ui_print "KSUD Not Found, skipping installation..."
-    fi
-else
-    ui_print "ZRAM module Not Found, skipping ZRAM module installation..."
-fi
-if [ -f "$AKHOME/kpn.zip" ]; then
-    MODULE_PATH="$AKHOME/kpn.zip"
-    KSUD_PATH="/data/adb/ksud"
-    if [ -f "$KSUD_PATH" ]; then
-        ui_print "Installing KP-N Module..."
-        /data/adb/ksud module install "$MODULE_PATH"
-        ui_print "Installation Complete!"
-    else
-        ui_print "KSUD Not Found, skipping installation..."
-    fi
-else
-    ui_print "KP-N module Not Found, skipping KP-N module installation..."
 fi
